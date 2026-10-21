@@ -34,4 +34,3 @@ jobs:
             --source website \
             --auth-mode login \
             --overwrite true \
-            --exclude-pattern '.git/*' '.github/*'
