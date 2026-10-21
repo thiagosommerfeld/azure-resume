@@ -31,7 +31,7 @@ jobs:
           az storage blob upload-batch \
             --account-name mysitestorage2026 \
             --destination '$web' \
-            --source . \
+            --source website \
             --auth-mode login \
             --overwrite true \
             --exclude-pattern '.git/*' '.github/*'
