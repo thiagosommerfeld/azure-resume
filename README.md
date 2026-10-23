@@ -75,8 +75,6 @@ Security is an important part of this project. The current implementation includ
 
 The GitHub Actions workflow uses GitHub repository secrets for the Azure configuration values required by `azure/login`, including the application client ID, tenant ID, and subscription ID. Authentication itself is performed through OIDC rather than a stored client secret.
 
-> **Architecture note:** Cloudflare provides DNS and proxy functionality for the custom domain. For a more robust Azure-native custom-domain HTTPS configuration, Azure Front Door or another suitable CDN can be evaluated as a future improvement.
-
 ## Technologies
 
 - **Microsoft Azure Storage** — static website hosting
