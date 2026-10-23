@@ -19,48 +19,7 @@ The solution consists of two main flows:
 
 ### Architecture Diagram
 
-```mermaid
-graph TD
-    User((Visitor / Browser))
-
-    subgraph CF["Cloudflare Edge"]
-        DNS["DNS Resolution<br/>www.thiagosommerfeld.com"]
-        Proxy["HTTPS Proxy<br/>TLS 1.2+"]
-    end
-
-    subgraph GH["GitHub"]
-        Repo["GitHub Repository<br/>azure-resume"]
-        Actions["GitHub Actions<br/>CI/CD Deployment"]
-    end
-
-    subgraph Azure["Microsoft Azure"]
-        Entra["Microsoft Entra ID<br/>OIDC Authentication"]
-
-        subgraph RG["Resource Group: mysite-rg"]
-            Storage["Storage Account<br/>mysitestorage2026"]
-            WebContainer["Static Website<br/>Container: $web"]
-        end
-    end
-
-    User -->|"HTTPS request"| DNS
-    DNS --> Proxy
-    Proxy -->|"Website request"| Storage
-    Storage --- WebContainer
-
-    Repo -->|"Push to main"| Actions
-    Actions -->|"1. Request OIDC token"| Entra
-    Entra -->|"2. Validate federated credential"| Actions
-    Actions -->|"3. Azure CLI upload<br/>Storage Blob Data Contributor"| WebContainer
-
-    style User fill:#f9f9f9,stroke:#333,color:#222
-    style CF fill:#f38020,stroke:#d66000,color:#fff
-    style GH fill:#181717,stroke:#000,color:#fff
-    style Azure fill:#e0f2fe,stroke:#0284c7,color:#222
-    style RG fill:#f0f9ff,stroke:#0284c7,stroke-dasharray:5 5,color:#222
-    style Entra fill:#0078D4,stroke:#005a9e,color:#fff
-    style Storage fill:#7fba00,stroke:#4b6e00,color:#fff
-    style WebContainer fill:#7fba00,stroke:#4b6e00,color:#fff
-```
+![Arquitetura Azure Cloud Resume Challenge](image/Diagram.jpg)
 
 ## Challenges and Design Decisions
 
